@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>User Home Page</title>
+    <link rel="stylesheet" href="css/style.css" th:href="@{/css/style.css}">
+</head>
+
+<body>
+
+<div>
+    <a class="right" th:href="@{/logOut}" method="POST">Logout</a>
+</div>
+
+<h1>Document manager</h1>
+<h2> <span th:text="${session.user.name + ' ' + session.user.surname}"></span> - Personal Area </h2>
+
+<p class="center">Welcome back Mr/Mrs <span th:text="${session.user.name}"></span>.</p>
+<p class="center">Here you can view and modify your documents. Enjoy our service!</p>
+
+<br>
+
+<div class="center">
+    <ul class="external" th:each="folder : ${folders}">
+        <li th:text="${folder.name}"></li>
+        <ul class="internal" th:each = "subFolder : ${folder.subFolders}">
+            <li> <a th:href="@{/folderView(subFolderId = ${subFolder.id}, subFolderName = ${subFolder.name})}" th:text="${subFolder.name}"></a> </li>
+        </ul>
+    </ul>
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document Manager</title>
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+</head>
+
+<body>
+
+<h1>Document manager CGI</h1>
+<h2>Please authenticate yourself</h2><br>
+
+<div class="center">
+    <button class="coolButton button1" onclick="alert('Example credentials:\n\na@b.it\naa\n\nc@d.it\nbb')">Help</button> <br><br>
+</div>
+
+<form method="POST" id="logInForm" class="center" action="Home">
+
+    <label for="logInMail" class="leftContainer" >E-mail address:</label>
+    <input type="text" id="logInMail" name="logInMail"> <br><br>
+
+    <label for="logInPassword" class="leftContainer" >Password:</label>
+    <input type="password" id="logInPassword" name="logInPassword"> <br><br>
+
+</form>
+
+<div class="center">
+    <button type="submit" class="coolButton button1" form="logInForm" value="SignIn">Sign In</button>
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Moving File</title>
+    <link rel="stylesheet" href="css/style.css" th:href="@{/css/style.css}">
+</head>
+
+<body>
+
+<div>
+    <a class="right" th:href="@{/logOut}" method="POST">Logout</a>
+    <a class="left" th:href="@{/goToHome}">Home</a>
+</div>
+
+<h1>Document manager</h1>
+<h2>Moving file</h2>
+
+<p>You have to select a different folder where to move <span th:text="${session.file.name + '.' + session.file.extension}"></span></p>
+
+
+<form class="center" action="MoveFile">
+    <div th:each="folder : ${folders}">
+        <div th:each="subFolder: ${folder.subFolders}">
+
+            <span th:if="${ session.file.owner == subFolder.id}">
+                <input type="radio" th:id="${subFolder.id}" name="selection" th:value="${subFolder.id}" disabled>
+                <label th:for="${subFolder.id}" th:text="${subFolder.name}"></label><br>
+            </span>
+
+            <span th:unless="${ session.file.owner == subFolder.id}">
+                <input type="radio" th:id="${subFolder.id}" name="selection" th:value="${subFolder.id}">
+                <label th:for="${subFolder.id}" th:text="${subFolder.name}"></label><br>
+            </span>
+
+        </div>
+    </div>
+    <br>
+    <input class="button1 coolButton" type="submit" value="Submit">
+</form>
+
+</body>
+</html>

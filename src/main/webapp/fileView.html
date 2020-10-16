@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>File View</title>
+    <link rel="stylesheet" href="css/style.css" th:href="@{/css/style.css}">
+</head>
+
+<body>
+
+<div>
+    <a class="right" th:href="@{/logOut}" method="POST">Logout</a>
+    <a class="left" th:href="@{/goToHome}">Home</a>
+</div>
+
+<h1>Document manager</h1>
+<h2>Content of <span th:text="${file.name + '.' + file.extension}"></span></h2>
+
+<br>
+
+<table>
+
+    <thead>
+    <tr>
+        <th>Data Type</th>
+        <th>Value</th>
+    </tr>
+    </thead>
+
+    <tbody>
+        <tr>
+            <td>Name</td>
+            <td th:text="${file.name}"></td>
+        </tr>
+        <tr>
+            <td>Extension</td>
+            <td th:text="${file.extension}"></td>
+        </tr>
+        <tr>
+            <td>Creation Date</td>
+            <td th:text="${file.creationDate}"></td>
+        </tr>
+        <tr>
+            <td>File ID</td>
+            <td th:text="${file.id}"></td>
+        </tr>
+        <tr>
+            <td>Folder ID Location</td>
+            <td th:text="${file.owner}"></td>
+        </tr>
+    </tbody>
+
+</table>
+
+<p><b>File Summary:</b></p>
+<p th:text="${file.summary}"></p>
+
+</body>
+</html>

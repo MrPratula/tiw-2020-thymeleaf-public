@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Folder View</title>
+    <link rel="stylesheet" href="css/style.css" th:href="@{/css/style.css}">
+</head>
+
+<body>
+
+<div>
+    <a class="right" th:href="@{/logOut}" method="POST">Logout</a>
+    <a class="left" th:href="@{/goToHome}">Home</a>
+</div>
+
+<h1>Document manager</h1>
+<h2>Content of <span th:text="${subFolder.name}"></span> folder</h2>
+<p class="center">You can select to view files info or move files into another folder</p>
+
+<br>
+
+<ul class="singleCenter" th:each="file : ${files}">
+    <li>
+        <span th:text="${file.name + '.' + file.extension}"> </span>
+        <a th:href="@{/fileView(fileId = ${file.id})}" method="get"> >view</a>
+        <a th:href="@{/fileMove(fileId = ${file.id})}" method="get"> >move</a>
+    </li>
+</ul>
+
+</body>
+
+</html>
